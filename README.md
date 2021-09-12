@@ -1,23 +1,29 @@
-Dual Attention Mechanism and Contrastive Learning Constraint for Point Cloud Classification
+Dual Discriminators and Multi-level Channel Recalibration for Unpaired Outdoor Image Defogging Network
 ==
-Created by [Yuanyue Zhang](https://github.com/yy-zhang832), [Hang Sun](https://github.com/sunhang1986), Shuifa Sun from Department of Computer and Information, China Three Gorges University.
+Created by Shuailing Fang, [Hang Sun](https://github.com/sunhang1986), Zhiping Dan from Department of Computer and Information, China Three Gorges University.
 
 Introduction
 --
-Our paper proposes a dual attention mechanism and contrastive learning constraint point cloud classification network(DACR-Net). It can benefit from channel and space to strengthen the interaction between local features respectively and improve the capability of feature extraction of the network.
+ Our paper proposes an unpaired outdoor image defogging network based on dual discriminators and multi-channel recalibration. The proposed network includes a dual discriminator mechanism and a multi-channel attention module.
 
 Prerequisites
 --
-+ Tensorflow 1.3.0
-+ Python 3.6
++ Pytorch 1.7.1
++ Python 3.6.12
 + CUDA 8.0
 + Ubuntu 18.04
 
 Test
 --
-[Download](https://1drv.ms/u/s!ApbTjxa06z9CgQfKl99yUDHL_wHs) *ModelNet-40* dataset first. Point clouds are sampled from meshes with 10K points (XYZ + normals) per shape and provided by PointNet++.
+[Download](https://sites.google.com/view/reside-dehaze-datasets) RESIDE dataset . [Download](https://labsites.rochester.edu/gsharma/research/computer-vision/hazerd/) Hazerd dataset . [Download](https://data.vision.ee.ethz.ch/cvl/ntire18//o-haze/) Ohaze dataset . 
+Test the model on *RESIDE*:
 
-Test the model on *ModelNet-40*:
+` python   test.py   --cuda --gpus 0,1 --test --test_ori --test_path test_imgpath --Gx1_model_path premodel/epoch_ots_Gx1.pth` 
+Test the model on *Hazerd*:
 
-` python test.py` 
+` python   test.py   --cuda --gpus 0,1 --test --test_ori --test_path test_imgpath --Gx1_model_path premodel/epoch_hazerd_Gx1.pth` 
+Test the model on *Ohaze*:
+
+` python   test.py   --cuda --gpus 0,1 --test --test_ori --test_path test_imgpath --Gx1_model_path premodel/epoch_ohaze_Gx1.pth` 
+
 
